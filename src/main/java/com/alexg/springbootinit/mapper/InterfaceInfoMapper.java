@@ -1,7 +1,10 @@
 package com.alexg.springbootinit.mapper;
 
 import com.alexg.apicommon.model.entity.InterfaceInfo;
+import com.alexg.springbootinit.model.vo.InvokeInterfaceInfoVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import java.util.List;
 
 /**
 * @author 86185

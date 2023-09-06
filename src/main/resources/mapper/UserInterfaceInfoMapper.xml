@@ -21,4 +21,17 @@
         totalNum,leftNum,status,
         createTime,updateTime,isDelete
     </sql>
+
+    <select id="listTopInvokeInterfaceInfo" resultType="com.alexg.springbootinit.model.vo.InvokeInterfaceInfoVO">
+        SELECT
+            interfaceInfoId AS id,
+            SUM( totalNum ) AS invokeNum
+        FROM
+            user_interface_info
+        GROUP BY
+            interfaceInfoId
+        ORDER BY
+            invokeNum DESC
+            LIMIT 3
+    </select>
 </mapper>

@@ -1,7 +1,10 @@
 package com.alexg.springbootinit.mapper;
 
 import com.alexg.apicommon.model.entity.UserInterfaceInfo;
+import com.alexg.springbootinit.model.vo.InvokeInterfaceInfoVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import java.util.List;
 
 
 /**
@@ -11,7 +14,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @Entity generator.domain.UserInterfaceInfo
 */
 public interface UserInterfaceInfoMapper extends BaseMapper<UserInterfaceInfo> {
-
+    List<InvokeInterfaceInfoVO> listTopInvokeInterfaceInfo(int limit);
 }
 
 

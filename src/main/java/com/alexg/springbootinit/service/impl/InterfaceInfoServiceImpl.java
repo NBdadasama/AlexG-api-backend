@@ -1,10 +1,10 @@
 package com.alexg.springbootinit.service.impl;
 
+import com.alexg.apicommon.model.entity.InterfaceInfo;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.alexg.springbootinit.common.ErrorCode;
 import com.alexg.springbootinit.exception.BusinessException;
 import com.alexg.springbootinit.service.InterfaceInfoService;
-import com.alexg.springbootinit.model.entity.InterfaceInfo;
 import com.alexg.springbootinit.mapper.InterfaceInfoMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;

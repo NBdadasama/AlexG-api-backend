@@ -1,7 +1,8 @@
 package com.alexg.springbootinit.service;
 
+import com.alexg.apicommon.model.entity.InterfaceInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.alexg.springbootinit.model.entity.InterfaceInfo;
+
 
 /**
 * @author 86185

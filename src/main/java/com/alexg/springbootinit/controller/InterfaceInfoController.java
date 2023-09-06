@@ -2,6 +2,7 @@ package com.alexg.springbootinit.controller;
 
 import cn.hutool.json.JSONUtil;
 import com.alexg.alexgclientsdk.client.AlexgApiClient;
+import com.alexg.apicommon.model.entity.InterfaceInfo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.google.gson.Gson;
@@ -15,7 +16,6 @@ import com.alexg.springbootinit.model.dto.interfaceinfo.InterfaceInfoAddRequest;
 import com.alexg.springbootinit.model.dto.interfaceinfo.InterfaceInfoQueryRequest;
 import com.alexg.springbootinit.model.dto.interfaceinfo.InterfaceInfoUpdateRequest;
 import com.alexg.springbootinit.model.dto.interfaceinfo.InvokeInterfaceRequest;
-import com.alexg.springbootinit.model.entity.InterfaceInfo;
 import com.alexg.springbootinit.model.entity.User;
 import com.alexg.springbootinit.model.enums.InterfaceInfoStatusEnum;
 import com.alexg.springbootinit.service.InterfaceInfoService;
