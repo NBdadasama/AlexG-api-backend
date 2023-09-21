@@ -297,7 +297,7 @@ insert into api_platform.`interface_info` (`name`, `description`, `url`, `reques
 ![image-20230112184904561](API开放平台.assets/image-20230112184904561.png)
 
 ```java
-package com.xuan.project.model.dto.interfaceinfo;
+package com.alexg.project.model.dto.interfaceinfo;
 
 import lombok.Data;
 
@@ -307,7 +307,7 @@ import java.io.Serializable;
 /**
  * 创建请求
  *
- * @author xuan
+ * @author alexg
  */
 @Data
 public class InterfaceInfoAddRequest implements Serializable {
@@ -339,7 +339,7 @@ public class InterfaceInfoAddRequest implements Serializable {
 
 ```java
 /**
- * @author xuan
+ * @author alexg
  * @description 针对表【interface_info(接口信息)】的数据库操作Service实现
  * @createDate 2023-01-12 16:11:19
  */
@@ -1450,9 +1450,9 @@ export default UpdateModal;
 ![image-20230114233348076](API开放平台.assets/image-20230114233348076.png)
 
 ```java
-package com.xuan.controller;
+package com.alexg.controller;
 
-import com.xuan.model.User;
+import com.alexg.model.User;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -1527,16 +1527,16 @@ maven中添加
 
 
 
-查看文档中的Http请求相关用法 编写XuanApiClient类
+查看文档中的Http请求相关用法 编写alexgApiClient类
 
 ```java
-package com.xuan.client;
+package com.alexg.client;
 
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
-import com.xuan.model.User;
+import com.alexg.model.User;
 
 import java.util.HashMap;
 
@@ -1547,7 +1547,7 @@ import java.util.HashMap;
  * @author: 玄
  * @date: 2023/1/15
  */
-public class XuanApiClient {
+public class alexgApiClient {
 	public String getNameByGet(String name) {
 		return HttpUtil.get("http://localhost:8123/api/name/" + name);
 	}
@@ -1677,7 +1677,7 @@ create table if not exists user
 
 ​			**用户参数 	+	密钥	=>	签名生成算法（MD5,HMac,Sha1) 	=>	不可解密的值**
 
-例子：	xuan 	+	abc	=>	7e7b9583aa0bc3e834fe8bcaebda38b5（这里是我随便输的，得到的值是随机的）
+例子：	alexg 	+	abc	=>	7e7b9583aa0bc3e834fe8bcaebda38b5（这里是我随便输的，得到的值是随机的）
 
 怎么知道签名对不对？
 
@@ -1716,7 +1716,7 @@ create table if not exists user
 先创建一个加密签名类SignUtil.java
 
 ```java
-package com.xuan.util;
+package com.alexg.util;
 
 import cn.hutool.crypto.digest.DigestUtil;
 
@@ -1741,12 +1741,12 @@ public class SignUtil {
 在Client类中新增构造Header的方法
 
 ```java
-public class XuanApiClient {
+public class alexgApiClient {
 
 	private final String accessKey;
 	private final String secretKey;
 
-	public XuanApiClient(String accessKey, String secretKey) {
+	public alexgApiClient(String accessKey, String secretKey) {
 		this.accessKey = accessKey;
 		this.secretKey = secretKey;
 	}
@@ -1786,12 +1786,12 @@ public class XuanApiClient {
 调用API的时候加密代码已经写好了，显然我们在API中需要用同样的方法来验证加密。这里以携带JSON body的POST请求为例
 
 ```java
-package com.xuan.controller;
+package com.alexg.controller;
 
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.StrUtil;
-import com.xuan.model.User;
-import com.xuan.util.SignUtil;
+import com.alexg.model.User;
+import com.alexg.util.SignUtil;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -1864,7 +1864,7 @@ public class NameController {
 
 ## 1、新建项目
 
-创建一个xuanapi-client-sdk的springboot项目 勾选lombok、Spring Configuration Processor（作用：自动生成配置的代码提示）
+创建一个alexgapi-client-sdk的springboot项目 勾选lombok、Spring Configuration Processor（作用：自动生成配置的代码提示）
 
 然后处理pom.xml   <build></build>这个<font color='red'>一定需要删除</font>因为这个是maven的构建项目成可运行jar包。现在是制作starter依赖包
 
@@ -1888,14 +1888,14 @@ public class NameController {
 @Data
 @ComponentScan
 @Configuration
-@ConfigurationProperties(prefix = "xuan.api.client")
-public class XuanApiClientConfig {
+@ConfigurationProperties(prefix = "alexg.api.client")
+public class alexgApiClientConfig {
 	private String accessKey;
 	private String secretKey;
 
 	@Bean
-	public XuanApiClient xuanApiClient() {
-		return new XuanApiClient(accessKey, secretKey);
+	public alexgApiClient alexgApiClient() {
+		return new alexgApiClient(accessKey, secretKey);
 	}
 
 }
@@ -1910,7 +1910,7 @@ public class XuanApiClientConfig {
 
 ```properties
 # spring boot starter
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.xuan.XuanApiClientConfig
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.alexg.alexgApiClientConfig
 ```
 
 ![image-20230116153954227](API开放平台.assets/image-20230116153954227.png)
@@ -1926,8 +1926,8 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.xuan.XuanApiC
 ![image-20230116154259164](API开放平台.assets/image-20230116154259164.png)
 
 ```bash
-[INFO] Installing /Users/xuan/Desktop/project/api-platform/xuanapi-client-sdk/target/xuanapi-client-sdk-0.0.1.jar to /Users/xuan/.m2/repository/com/xuan/xuanapi-client-sdk/0.0.1/xuanapi-client-sdk-0.0.1.jar
-[INFO] Installing /Users/xuan/Desktop/project/api-platform/xuanapi-client-sdk/pom.xml to /Users/xuan/.m2/repository/com/xuan/xuanapi-client-sdk/0.0.1/xuanapi-client-sdk-0.0.1.pom
+[INFO] Installing /Users/alexg/Desktop/project/api-platform/alexgapi-client-sdk/target/alexgapi-client-sdk-0.0.1.jar to /Users/alexg/.m2/repository/com/alexg/alexgapi-client-sdk/0.0.1/alexgapi-client-sdk-0.0.1.jar
+[INFO] Installing /Users/alexg/Desktop/project/api-platform/alexgapi-client-sdk/pom.xml to /Users/alexg/.m2/repository/com/alexg/alexgapi-client-sdk/0.0.1/alexgapi-client-sdk-0.0.1.pom
 ```
 
 
@@ -1936,15 +1936,15 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.xuan.XuanApiC
 
 **引入依赖**
 
-回到xuan-Interface项目，把之前的client、util、model全部删掉。然后在pom中引入我们刚刚制作好的starter
+回到alexg-Interface项目，把之前的client、util、model全部删掉。然后在pom中引入我们刚刚制作好的starter
 
 <font color='red'>注意：</font>这里能直接引入，是因为刚刚我们install的stater在我们的本地，可以发布到Maven仓库或者提供jar包供大家使用。
 
 ```xml
 <!--自己制作的starter-->
 <dependency>
-    <groupId>com.xuan</groupId>
-    <artifactId>xuanapi-client-sdk</artifactId>
+    <groupId>com.alexg</groupId>
+    <artifactId>alexgapi-client-sdk</artifactId>
     <version>0.0.1</version>
 </dependency>
 ```
@@ -1961,7 +1961,7 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.xuan.XuanApiC
 
 
 
-在测试类使用@Resource注入XuanApiClient进行测试
+在测试类使用@Resource注入alexgApiClient进行测试
 
 ![image-20230116160643683](API开放平台.assets/image-20230116160643683.png)
 
@@ -2002,7 +2002,7 @@ yml中secret不正确也会返回 "无权限"
      /**
       * 通过id发送请求
       *
-      * @author xuan
+      * @author alexg
       */
      @Data
      public class IdRequest implements Serializable {
@@ -2020,7 +2020,7 @@ yml中secret不正确也会返回 "无权限"
      使用枚举类来表示上线/下线状态
 
      ```java
-     package com.xuan.project.model.enums;
+     package com.alexg.project.model.enums;
      
      import java.util.Arrays;
      import java.util.List;
@@ -2029,7 +2029,7 @@ yml中secret不正确也会返回 "无权限"
      /**
       * 接口状态枚举
       *
-      * @author xuan
+      * @author alexg
       */
      public enum InterfaceInfoStatusEnum {
      
@@ -2068,13 +2068,13 @@ yml中secret不正确也会返回 "无权限"
 
 3.   **在controller里编写上下线代码**
 
-     <font color='red'>这里有个TODO</font> 判断该接口是否可以调用时，由XuanApiClient固定方法名改为根据测试地址来调用
+     <font color='red'>这里有个TODO</font> 判断该接口是否可以调用时，由alexgApiClient固定方法名改为根据测试地址来调用
 
      ```java
      /**
       * API信息接口
       *
-      * @author xuan
+      * @author alexg
       */
      @RestController
      @RequestMapping("/interfaceInfo")
@@ -2088,7 +2088,7 @@ yml中secret不正确也会返回 "无权限"
      	private UserService userService;
      
      	@Resource
-     	private XuanApiClient xuanApiClient;
+     	private alexgApiClient alexgApiClient;
      
      	/**
      	 * 上线接口
@@ -2111,9 +2111,9 @@ yml中secret不正确也会返回 "无权限"
      		// 判断接口是否能使用
      		// TODO 根据测试地址来调用
      		// 这里我先用固定的方法进行测试，后面来改
-     		com.xuan.model.User user = new com.xuan.model.User();
+     		com.alexg.model.User user = new com.alexg.model.User();
      		user.setName("MARS");
-     		String name = xuanApiClient.getNameByPostWithJson(user);
+     		String name = alexgApiClient.getNameByPostWithJson(user);
      		if (StrUtil.isBlank(name)) {
      			throw new BusinessException(ErrorCode.SYSTEM_ERROR, "接口验证失败");
      		}
@@ -2160,7 +2160,7 @@ yml中secret不正确也会返回 "无权限"
      这里添加权限校验，这里用到**@AuthCheck(mustRole = "admin")**的切面注解，对应的实现方法在aop/AuthInterceptor
 
      ```java
-     package com.xuan.project.annotation;
+     package com.alexg.project.annotation;
      
      import java.lang.annotation.ElementType;
      import java.lang.annotation.Retention;
@@ -2170,7 +2170,7 @@ yml中secret不正确也会返回 "无权限"
      /**
       * 权限校验
       *
-      * @author xuan
+      * @author alexg
       */
      @Target(ElementType.METHOD)
      @Retention(RetentionPolicy.RUNTIME)
@@ -2197,14 +2197,14 @@ yml中secret不正确也会返回 "无权限"
      aop/AuthInterceptor.java
 
      ```java
-     package com.xuan.project.aop;
+     package com.alexg.project.aop;
      
      import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
-     import com.xuan.project.common.ErrorCode;
-     import com.xuan.project.exception.BusinessException;
-     import com.xuan.project.model.entity.User;
-     import com.xuan.project.service.UserService;
-     import com.xuan.project.annotation.AuthCheck;
+     import com.alexg.project.common.ErrorCode;
+     import com.alexg.project.exception.BusinessException;
+     import com.alexg.project.model.entity.User;
+     import com.alexg.project.service.UserService;
+     import com.alexg.project.annotation.AuthCheck;
      import org.apache.commons.lang3.StringUtils;
      import org.aspectj.lang.ProceedingJoinPoint;
      import org.aspectj.lang.annotation.Around;
@@ -2224,7 +2224,7 @@ yml中secret不正确也会返回 "无权限"
      /**
       * 权限校验 AOP
       *
-      * @author xuan
+      * @author alexg
       */
      @Aspect
      @Component
@@ -2856,7 +2856,7 @@ export default Index;
 **新增DTO类**
 
 ```java
-package com.xuan.project.model.dto.interfaceinfo;
+package com.alexg.project.model.dto.interfaceinfo;
 
 import lombok.Data;
 
@@ -2866,7 +2866,7 @@ import java.io.Serializable;
 /**
  * 调用接口参数
  *
- * @author xuan
+ * @author alexg
  */
 @Data
 public class InvokeInterfaceRequest implements Serializable {
@@ -2913,10 +2913,10 @@ controller类新增方法
 		User loginUser = userService.getLoginUser(request);
 		String accessKey = loginUser.getAccessKey();
 		String secretKey = loginUser.getSecretKey();
-		XuanApiClient client = new XuanApiClient(accessKey, secretKey);
+		alexgApiClient client = new alexgApiClient(accessKey, secretKey);
 		// 先写死请求
 		String userRequestParams = invokeInterfaceRequest.getRequestParams();
-		com.xuan.model.User user = JSONUtil.toBean(userRequestParams, com.xuan.model.User.class);
+		com.alexg.model.User user = JSONUtil.toBean(userRequestParams, com.alexg.model.User.class);
 		String result = client.getNameByPostWithJson(user);
 		return ResultUtils.success(result);
 	}
@@ -3168,12 +3168,12 @@ public class UserInterfaceInfo implements Serializable {
 再复制之前的controller改名替换
 
 ```java
-package com.xuan.project.controller;
+package com.alexg.project.controller;
 
 /**
  * API信息接口
  *
- * @author xuan
+ * @author alexg
  */
 @RestController
 @RequestMapping("/userInterfaceInfo")
@@ -3620,7 +3620,7 @@ public class DemogatewayApplication {
 编写代码：
 
 ```java
-package com.xuan;
+package com.alexg;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -3629,10 +3629,10 @@ import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class XuanapiGatewayApplication {
+public class alexgapiGatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(XuanapiGatewayApplication.class, args);
+		SpringApplication.run(alexgapiGatewayApplication.class, args);
 	}
 
 	@Bean
@@ -4020,7 +4020,7 @@ spring:
 
 
 
-使用xuan-api做测试
+使用alexg-api做测试
 
 ```yaml
 server:
@@ -4039,7 +4039,7 @@ spring:
             - AddRequestParameter=name, mars
 ```
 
-在地址栏访问：http://localhost:8090/api/name/xuan
+在地址栏访问：http://localhost:8090/api/name/alexg
 
 得到结果如下
 
@@ -4561,7 +4561,7 @@ spring:
 查看[官网](https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#global-filters)，使用模板代码为基础进行编写程序
 
 ```java
-package com.xuan.filter;
+package com.alexg.filter;
 /**
  * 全局过滤器
  *
@@ -4652,8 +4652,8 @@ private static final List<String> IP_WHITE_LIST = Arrays.asList("127.0.0.1", "12
 
 ```xml
 <dependency>
-    <groupId>com.xuan</groupId>
-    <artifactId>xuanapi-client-sdk</artifactId>
+    <groupId>com.alexg</groupId>
+    <artifactId>alexgapi-client-sdk</artifactId>
     <version>0.0.1</version>
 </dependency>
 ```
@@ -5074,7 +5074,7 @@ dubbo:
 
 ### 1、api-platform-backend
 
-在主包下添加rpc包（com.xuan.project.rpc）
+在主包下添加rpc包（com.alexg.project.rpc）
 
 ![image-20230206120727992](API开放平台.assets/image-20230206120727992.png)
 
@@ -5104,7 +5104,7 @@ Application主类新增@EnableDubbo注解
 ```java
 @SpringBootApplication
 @EnableDubbo
-@MapperScan("com.xuan.project.mapper")
+@MapperScan("com.alexg.project.mapper")
 public class MyApplication {
 
     public static void main(String[] args) {
@@ -5125,7 +5125,7 @@ public class MyApplication {
 
 ### 2、api-platform-gateway
 
-在和backend一样的路径下新建rpc包 （com.xuan.project.rpc） 新增接口类 代码复制过来即可
+在和backend一样的路径下新建rpc包 （com.alexg.project.rpc） 新增接口类 代码复制过来即可
 
 ![image-20230206121742038](API开放平台.assets/image-20230206121742038.png)
 
@@ -5200,7 +5200,7 @@ class ApiPlatformGatewayApplicationTests {
              <relativePath/> <!-- lookup parent from repository -->
          </parent>
      
-         <groupId>com.xuan</groupId>
+         <groupId>com.alexg</groupId>
          <artifactId>api-platform-common</artifactId>
          <version>0.0.1</version>
      
@@ -5331,7 +5331,7 @@ class ApiPlatformGatewayApplicationTests {
 
      ```xml
          <dependency>
-             <groupId>com.xuan</groupId>
+             <groupId>com.alexg</groupId>
              <artifactId>api-platform-common</artifactId>
              <version>0.0.1</version>
          </dependency>
@@ -5411,7 +5411,7 @@ class ApiPlatformGatewayApplicationTests {
        经分析我们需要在主类上排除数据库的类加载（google springboot忽略数据库启动得到）
 
        ```java
-       package com.xuan.project;
+       package com.alexg.project;
        
        import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
        import org.springframework.boot.SpringApplication;
@@ -5784,9 +5784,9 @@ public interface UserInterfaceInfoMapper extends BaseMapper<UserInterfaceInfo> {
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xuan.project.mapper.UserInterfaceInfoMapper">
+<mapper namespace="com.alexg.project.mapper.UserInterfaceInfoMapper">
    
-    <select id="listTopInvokeInterfaceInfo" resultType="com.xuan.project.model.vo.InvokeInterfaceInfoVO">
+    <select id="listTopInvokeInterfaceInfo" resultType="com.alexg.project.model.vo.InvokeInterfaceInfoVO">
         SELECT interface_info_id AS id,
                SUM(total_num)    AS invoke_num
         FROM user_interface_info
