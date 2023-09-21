@@ -5,7 +5,7 @@ import com.alexg.springbootinit.common.ErrorCode;
 import com.alexg.springbootinit.common.ResultUtils;
 import com.alexg.springbootinit.exception.BusinessException;
 import com.alexg.springbootinit.model.dto.postthumb.PostThumbAddRequest;
-import com.alexg.springbootinit.model.entity.User;
+import com.alexg.apicommon.model.entity.User;
 import com.alexg.springbootinit.service.PostThumbService;
 import com.alexg.springbootinit.service.UserService;
 import javax.annotation.Resource;

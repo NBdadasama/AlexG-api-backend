@@ -16,7 +16,7 @@ import com.alexg.springbootinit.model.dto.user.UserQueryRequest;
 import com.alexg.springbootinit.model.dto.user.UserRegisterRequest;
 import com.alexg.springbootinit.model.dto.user.UserUpdateMyRequest;
 import com.alexg.springbootinit.model.dto.user.UserUpdateRequest;
-import com.alexg.springbootinit.model.entity.User;
+import com.alexg.apicommon.model.entity.User;
 import com.alexg.springbootinit.model.vo.LoginUserVO;
 import com.alexg.springbootinit.model.vo.UserVO;
 import com.alexg.springbootinit.service.UserService;

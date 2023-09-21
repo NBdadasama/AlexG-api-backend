@@ -3,7 +3,7 @@ package com.alexg.springbootinit.aop;
 import com.alexg.springbootinit.annotation.AuthCheck;
 import com.alexg.springbootinit.common.ErrorCode;
 import com.alexg.springbootinit.exception.BusinessException;
-import com.alexg.springbootinit.model.entity.User;
+import com.alexg.apicommon.model.entity.User;
 import com.alexg.springbootinit.model.enums.UserRoleEnum;
 import com.alexg.springbootinit.service.UserService;
 import javax.annotation.Resource;

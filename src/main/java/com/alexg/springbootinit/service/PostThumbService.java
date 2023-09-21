@@ -2,7 +2,7 @@ package com.alexg.springbootinit.service;
 
 import com.alexg.springbootinit.model.entity.PostThumb;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.alexg.springbootinit.model.entity.User;
+import com.alexg.apicommon.model.entity.User;
 
 /**
  * 帖子点赞服务

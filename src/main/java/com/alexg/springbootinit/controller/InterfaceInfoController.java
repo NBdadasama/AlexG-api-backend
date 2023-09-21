@@ -16,7 +16,7 @@ import com.alexg.springbootinit.model.dto.interfaceinfo.InterfaceInfoAddRequest;
 import com.alexg.springbootinit.model.dto.interfaceinfo.InterfaceInfoQueryRequest;
 import com.alexg.springbootinit.model.dto.interfaceinfo.InterfaceInfoUpdateRequest;
 import com.alexg.springbootinit.model.dto.interfaceinfo.InvokeInterfaceRequest;
-import com.alexg.springbootinit.model.entity.User;
+import com.alexg.apicommon.model.entity.User;
 import com.alexg.springbootinit.model.enums.InterfaceInfoStatusEnum;
 import com.alexg.springbootinit.service.InterfaceInfoService;
 import com.alexg.springbootinit.service.UserService;

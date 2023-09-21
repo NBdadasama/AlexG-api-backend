@@ -1,5 +1,6 @@
 package com.alexg.springbootinit.mapper;
 
+
 import com.alexg.apicommon.model.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 

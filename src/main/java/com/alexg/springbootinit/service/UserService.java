@@ -3,7 +3,7 @@ package com.alexg.springbootinit.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.alexg.springbootinit.model.dto.user.UserQueryRequest;
-import com.alexg.springbootinit.model.entity.User;
+import com.alexg.apicommon.model.entity.User;
 import com.alexg.springbootinit.model.vo.LoginUserVO;
 import com.alexg.springbootinit.model.vo.UserVO;
 import java.util.List;

@@ -7,7 +7,7 @@ import com.alexg.springbootinit.exception.BusinessException;
 import com.alexg.springbootinit.mapper.PostThumbMapper;
 import com.alexg.springbootinit.model.entity.Post;
 import com.alexg.springbootinit.model.entity.PostThumb;
-import com.alexg.springbootinit.model.entity.User;
+import com.alexg.apicommon.model.entity.User;
 import com.alexg.springbootinit.service.PostService;
 import com.alexg.springbootinit.service.PostThumbService;
 import javax.annotation.Resource;

@@ -10,7 +10,7 @@ import com.alexg.springbootinit.exception.BusinessException;
 import com.alexg.springbootinit.model.dto.userInterfaceinfo.UserInterfaceInfoAddRequest;
 import com.alexg.springbootinit.model.dto.userInterfaceinfo.UserInterfaceInfoQueryRequest;
 import com.alexg.springbootinit.model.dto.userInterfaceinfo.UserInterfaceInfoUpdateRequest;
-import com.alexg.springbootinit.model.entity.User;
+import com.alexg.apicommon.model.entity.User;
 import com.alexg.springbootinit.service.UserInterfaceInfoService;
 import com.alexg.springbootinit.service.UserService;
 import lombok.extern.slf4j.Slf4j;

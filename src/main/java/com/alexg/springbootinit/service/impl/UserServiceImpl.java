@@ -12,7 +12,7 @@ import com.alexg.springbootinit.constant.CommonConstant;
 import com.alexg.springbootinit.exception.BusinessException;
 import com.alexg.springbootinit.mapper.UserMapper;
 import com.alexg.springbootinit.model.dto.user.UserQueryRequest;
-import com.alexg.springbootinit.model.entity.User;
+import com.alexg.apicommon.model.entity.User;
 import com.alexg.springbootinit.model.enums.UserRoleEnum;
 import com.alexg.springbootinit.model.vo.LoginUserVO;
 import com.alexg.springbootinit.model.vo.UserVO;

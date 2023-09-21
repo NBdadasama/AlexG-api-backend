@@ -8,7 +8,7 @@ import com.alexg.springbootinit.constant.FileConstant;
 import com.alexg.springbootinit.exception.BusinessException;
 import com.alexg.springbootinit.manager.CosManager;
 import com.alexg.springbootinit.model.dto.file.UploadFileRequest;
-import com.alexg.springbootinit.model.entity.User;
+import com.alexg.apicommon.model.entity.User;
 import com.alexg.springbootinit.model.enums.FileUploadBizEnum;
 import com.alexg.springbootinit.service.UserService;
 import java.io.File;

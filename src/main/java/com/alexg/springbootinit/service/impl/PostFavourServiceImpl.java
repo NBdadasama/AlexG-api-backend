@@ -10,7 +10,7 @@ import com.alexg.springbootinit.exception.BusinessException;
 import com.alexg.springbootinit.mapper.PostFavourMapper;
 import com.alexg.springbootinit.model.entity.Post;
 import com.alexg.springbootinit.model.entity.PostFavour;
-import com.alexg.springbootinit.model.entity.User;
+import com.alexg.apicommon.model.entity.User;
 import com.alexg.springbootinit.service.PostFavourService;
 import com.alexg.springbootinit.service.PostService;
 import javax.annotation.Resource;

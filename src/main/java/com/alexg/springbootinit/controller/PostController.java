@@ -15,7 +15,7 @@ import com.alexg.springbootinit.model.dto.post.PostEditRequest;
 import com.alexg.springbootinit.model.dto.post.PostQueryRequest;
 import com.alexg.springbootinit.model.dto.post.PostUpdateRequest;
 import com.alexg.springbootinit.model.entity.Post;
-import com.alexg.springbootinit.model.entity.User;
+import com.alexg.apicommon.model.entity.User;
 import com.alexg.springbootinit.model.vo.PostVO;
 import com.alexg.springbootinit.service.PostService;
 import com.alexg.springbootinit.service.UserService;
